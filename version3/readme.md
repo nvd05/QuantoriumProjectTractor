@@ -5,6 +5,7 @@
 # Список обработчиков кода
 * `include\Handlers\ActuatorsHandler.h` - отвечает за обновление положений актуаторов + выставляет значение тормоза и руля по значениям приемника пульта
 * `include\Handlers\DisplayHandler.h` - отвечает за жк дисплей (подключение пинов в `PinList.h`)(+ библиотека `LiquidCrystal.h`)
+> `Примичание`: нужно переписать под использование callback функций с использованием массивов (возможно Vector).
 * `include\Handlers\FeedbackHandler.h` - обратная связь (пока что бесполезный файл)
 * `include\Handlers\GearboxHandler.h` - отвечает за переключение коробки передач
 * `include\Handlers\RelayHandler.h` - отвечает за реле (у нас она одна)
