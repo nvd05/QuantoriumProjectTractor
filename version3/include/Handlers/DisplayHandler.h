@@ -31,7 +31,7 @@ void display_page_1()
 	lcd_display.setCursor(9, 2);
 	lcd_display.print(", ch6: " + String(remote_values.two_position_toggle_switch));
 
-	// working hours
+	// Время работы
 	long _second = millis() / 1000;
 	long _minute = _second  / 60;
 	long _hour   = _minute  / 60;

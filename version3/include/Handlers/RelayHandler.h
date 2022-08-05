@@ -23,13 +23,13 @@ void listener_relay_handler()
 		 *   left   right
 		 * +-----+ +-----+
 		 * |     | |     |
-		 * |    *| |*    |
+		 * |    *| |     |
 		 * +-----+ +-----+
 		 */
-		bool ignition_right_width = remote_values.right_stick_width < PWM_RELAY_IGNITION_HEIGHT_MAXIMUM;
+		// bool ignition_right_width = remote_values.right_stick_width < PWM_RELAY_IGNITION_HEIGHT_MAXIMUM;
 		bool ignition_left_height = remote_values.left_stick_height < PWM_RELAY_IGNITION_HEIGHT_MAXIMUM;
 		bool ignition_left_width  = remote_values.left_stick_width  > PWM_RELAY_IGNITION_WIDTH_MINIMUM;
-		bool ignition_status = ignition_right_width && ignition_left_height && ignition_left_width;
+		bool ignition_status = ignition_left_height && ignition_left_width;
 		digitalWrite(PIN_RELAY_IGNITION, ignition_status ? HIGH : LOW);
 	}
 

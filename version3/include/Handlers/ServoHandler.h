@@ -4,6 +4,12 @@
 #include "Configuration/PinList.h"
 #include "Memory/VariableList.h"
 
+void block_servos()
+{
+	servo_list.mute.detach();
+	servo_list.gas.detach();
+}
+
 void configuration_servo_handler()
 {
 	servo_list.mute.attach(PIN_SERVO_MUTE); // Глушение

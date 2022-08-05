@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Configuration/PWMValues.h"
+#include "Handlers/ServoHandler.h"
 #include "Memory/VariableList.h"
 
 long gearbox_get_direction()
@@ -8,17 +9,17 @@ long gearbox_get_direction()
 	// Переключение коробки передач в положение -1 (трактор двигается назад)
 	if (remote_values.three_position_toggle_switch < 1250)
 	{
-		return 0;
+		return actuator_piston_list.gearbox.get_minimum();
 	}
 
 	// Переключение коробки в передачу 1 (трактор двигается вперед)
 	if (remote_values.three_position_toggle_switch > 1750)
 	{
-		return 1000000;
+		return actuator_piston_list.gearbox.get_maximum();
 	}
 
 	// Нейстральная скорость
-	return 500000;
+	return actuator_piston_list.gearbox.get_maximum() / 2;
 }
 
 // список функций
@@ -41,6 +42,9 @@ void gearbox_task_1()
 
 	// Зажать сцепление
 	actuator_piston_list.clutch.set_expected(actuator_piston_list.clutch.get_maximum());
+
+	// Заблокировать серво приводы
+	block_servos();
 
 	gearbox_back   = gearbox;
 	gearbox_status = 1;
@@ -85,6 +89,9 @@ void gearbox_task_4()
 	// В нужные положения их автоматический выставит пульт
 	actuator_piston_list.rudder.set_block(false);
 	actuator_piston_list.brake.set_block(false);
+
+	// Разблокировать серво приводы
+	configuration_servo_handler();
 
 	gearbox_status = 0;
 }

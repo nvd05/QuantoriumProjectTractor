@@ -27,7 +27,7 @@
 // Коробка передач
 #define PIN_DRIVER_GEARBOX_ENABLE  23 // Драйвер => Коробка передач => Включен
 #define PIN_DRIVER_GEARBOX_INPUT_A 25 // Драйвер => Коробка передач => Вход А
-#define PIN_DRIVER_GEARBOX_INPUT_B 27 // Драйвер => Коробка передач => Вход Б
+#define PIN_DRIVER_GEARBOX_INPUT_B 27 // Драйвер  => Коробка передач => Вход Б
 
 // Сцепление
 #define PIN_DRIVER_CLUTCH_ENABLE  29 // Драйвер => Сцепление => Включен

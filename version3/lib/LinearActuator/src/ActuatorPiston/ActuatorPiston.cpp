@@ -12,16 +12,7 @@ void ActuatorPiston::configuration(ActuatorMotor motor, long current, long minim
 
 void ActuatorPiston::update_direction()
 {
-	double percent = (double) get_current() / (double) get_expected();
-
-	// Если ожидаемое и текущее положения совпадают на больше чем 90%, тогда не нужно двигать
-	if (percent > 0.9 && percent < 1.1)
-	{
-		_motor.set_expected(0);
-		return;
-	}
-
-	_motor.set_expected(_expectedPosition - get_current());
+	_motor.set_expected(is_move() ? _expectedPosition - get_current() : 0);
 };
 
 void ActuatorPiston::update_position()
@@ -65,5 +56,5 @@ long ActuatorPiston::get_previous()
 bool ActuatorPiston::is_move()
 {
 	double percent = (double) get_current() / (double) get_expected();
-	return percent < 0.9 || percent > 1.1;
+	return percent < 0.8 || percent > 1.2;
 };

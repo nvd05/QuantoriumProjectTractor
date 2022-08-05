@@ -19,8 +19,17 @@ void ActuatorMotor::set_expected(long position)
 	// normalize value
 	set_current(position);
 
-	digitalWrite(_pinInputA, get_current() + 2 == HIGH);
-	digitalWrite(_pinInputB, get_current() + 0 == HIGH);
+	// Направление
+	long input_a = _direction ? 0 : 2;
+	long input_b = _direction ? 2 : 0;
+
+	digitalWrite(_pinInputA, get_current() + input_a == HIGH);
+	digitalWrite(_pinInputB, get_current() + input_b == HIGH);
+};
+
+void ActuatorMotor::set_reverse(bool direction)
+{
+	_direction = direction;
 };
 
 void ActuatorMotor::set_enable(long enable)

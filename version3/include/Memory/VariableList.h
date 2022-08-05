@@ -8,6 +8,7 @@
 #include "Structures/ActuatorMotorList.h"
 #include "Structures/FeedbackValues.h"
 #include "Structures/RemoteValues.h"
+#include "Structures/RemoteFilter.h"
 #include "Structures/ServoList.h"
 
 // Дисплей
@@ -25,4 +26,5 @@ ActuatorPistonList actuator_piston_list;
 ActuatorMotorList  actuator_motor_list;
 FeedbackValues     feedback_values; // Обратная связь => Значения
 RemoteValues       remote_values;   // Пульт          => Значения
+RemoteFilter       remote_filter;   // Пульт          => Фильтр
 ServoList          servo_list;      // Серво          => Список
